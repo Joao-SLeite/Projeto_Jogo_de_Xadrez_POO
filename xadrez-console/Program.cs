@@ -9,11 +9,20 @@ namespace xadrez_console
     {
         static void Main(string[] args)
         {
-            Tabuleiro tabuleiro = new Tabuleiro(8, 8);
-            tabuleiro.colocarPeca(new Torre(Cor.Preta, tabuleiro), new Posicao(0, 0));
-            tabuleiro.colocarPeca(new Torre(Cor.Preta, tabuleiro), new Posicao(1, 3));
-            tabuleiro.colocarPeca(new Rei(Cor.Preta, tabuleiro), new Posicao(2, 4));
-            Tela.ImprimirTabuleiro(tabuleiro);
+            try
+            {
+                Tabuleiro tabuleiro = new Tabuleiro(8, 8);
+                tabuleiro.colocarPeca(new Torre(Cor.Preta, tabuleiro), new Posicao(0, 0));
+                tabuleiro.colocarPeca(new Torre(Cor.Preta, tabuleiro), new Posicao(1, 3));
+                tabuleiro.colocarPeca(new Rei(Cor.Preta, tabuleiro), new Posicao(0, 1));
+                Tela.ImprimirTabuleiro(tabuleiro);
+            }
+            catch(TabuleiroException e)
+            {
+                Console.WriteLine("Um erro ocurreu");
+                Console.WriteLine(e.Message);
+            }
+ 
             Console.ReadLine();
         }
     }
